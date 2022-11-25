@@ -1,5 +1,6 @@
+#Importing libraries tkinter as a whole, messagebox from tkinter and the fonts for font styling
 from tkinter import *
-import tkinter.font
+import tkinter.font 
 from gpiozero import LED
 import RPi.GPIO
 RPi.GPIO.setmode(RPi.GPIO.BCM)
@@ -19,7 +20,7 @@ def dash():
     time.sleep(1.5)
     led.off()
     time.sleep(0.5)
-    
+ #For converting each letter to morse code   
 dict = { 'A':'.-', 'B':'-...', 
                     'C':'-.-.', 'D':'-..', 'E':'.', 
                     'F':'..-.', 'G':'--.', 'H':'....', 
@@ -33,14 +34,14 @@ dict = { 'A':'.-', 'B':'-...',
 
 
         
-  
+#Setting up the GUI Layout  
 win = Tk()
 win.title("Text To Morse")
 win.geometry("400x250")
 win.configure(background = "green")
 myFont = tkinter.font.Font(family = 'Aerial', size = 17, weight = "bold")
                                   
-
+#For enabling the QUIT button
 def close():
     win.destroy()
     GPIO.cleanup()
@@ -63,7 +64,7 @@ def convertAndBlink():
 textInput = Entry(win)
 textInput.pack()
 
-
+#MAIN
     ## Buttons - Instead of using grid spacing, we can '.pack()' to order our widgets respectively.
 sendButton = Button(win, text = 'Submit', command = convertAndBlink)
 sendButton.pack(side= 'top')
